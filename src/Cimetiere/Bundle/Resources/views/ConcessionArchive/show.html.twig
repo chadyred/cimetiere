@@ -1,0 +1,96 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>ConcessionArchive</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Codecimetiere</th>
+                <td>{{ entity.codeCimetiere }}</td>
+            </tr>
+            <tr>
+                <th>Codegestionconcession</th>
+                <td>{{ entity.codeGestionConcession }}</td>
+            </tr>
+            <tr>
+                <th>Nature</th>
+                <td>{{ entity.nature }}</td>
+            </tr>
+            <tr>
+                <th>Typeconcession</th>
+                <td>{{ entity.typeConcession }}</td>
+            </tr>
+            <tr>
+                <th>Nbplaces</th>
+                <td>{{ entity.nbPlaces }}</td>
+            </tr>
+            <tr>
+                <th>Dateecheance</th>
+                <td>{{ entity.dateEcheance|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Datederniereacquisition</th>
+                <td>{{ entity.dateDerniereAcquisition|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ entity.duree }}</td>
+            </tr>
+            <tr>
+                <th>Numerotitreconcession</th>
+                <td>{{ entity.numeroTitreConcession }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ entity.commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Coordx</th>
+                <td>{{ entity.coordX }}</td>
+            </tr>
+            <tr>
+                <th>Coordy</th>
+                <td>{{ entity.coordY }}</td>
+            </tr>
+            <tr>
+                <th>Angle</th>
+                <td>{{ entity.angle }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ entity.url }}</td>
+            </tr>
+            <tr>
+                <th>Hauteur</th>
+                <td>{{ entity.hauteur }}</td>
+            </tr>
+            <tr>
+                <th>Largeur</th>
+                <td>{{ entity.largeur }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ entity.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('concessionarchive') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('concessionarchive_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

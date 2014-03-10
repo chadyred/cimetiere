@@ -1,0 +1,73 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>ConcessionArchive list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codecimetiere</th>
+                <th>Codegestionconcession</th>
+                <th>Nature</th>
+                <th>Typeconcession</th>
+                <th>Nbplaces</th>
+                <th>Dateecheance</th>
+                <th>Datederniereacquisition</th>
+                <th>Duree</th>
+                <th>Numerotitreconcession</th>
+                <th>Commentaire</th>
+                <th>Coordx</th>
+                <th>Coordy</th>
+                <th>Angle</th>
+                <th>Url</th>
+                <th>Hauteur</th>
+                <th>Largeur</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('concessionarchive_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.codeCimetiere }}</td>
+                <td>{{ entity.codeGestionConcession }}</td>
+                <td>{{ entity.nature }}</td>
+                <td>{{ entity.typeConcession }}</td>
+                <td>{{ entity.nbPlaces }}</td>
+                <td>{% if entity.dateEcheance %}{{ entity.dateEcheance|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.dateDerniereAcquisition %}{{ entity.dateDerniereAcquisition|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.duree }}</td>
+                <td>{{ entity.numeroTitreConcession }}</td>
+                <td>{{ entity.commentaire }}</td>
+                <td>{{ entity.coordX }}</td>
+                <td>{{ entity.coordY }}</td>
+                <td>{{ entity.angle }}</td>
+                <td>{{ entity.url }}</td>
+                <td>{{ entity.hauteur }}</td>
+                <td>{{ entity.largeur }}</td>
+                <td>{{ entity.prix }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('concessionarchive_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('concessionarchive_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('concessionarchive_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

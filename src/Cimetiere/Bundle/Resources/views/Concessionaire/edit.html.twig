@@ -1,0 +1,93 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12  col-lg-10 col-lg-offset-1">
+            <h1>Modifier un concessionaire</h1>
+{{ form_start(edit_form, {'attr': {'class': 'form-horizontal'} }) }}
+{{ form_errors(edit_form) }}
+<div class="form-group">
+{{ form_label(edit_form.titre, "Titre : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.titre) }}
+{{ form_widget(edit_form.titre, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.nomPrenom, "Nom et prénom : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.nomPrenom) }}
+{{ form_widget(edit_form.nomPrenom, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.nomJF, "Nom de jeune fille : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.nomJF) }}
+{{ form_widget(edit_form.nomJF, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.cp, "Code postal : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.cp) }}
+{{ form_widget(edit_form.cp, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+            <div class="form-group">
+{{ form_label(edit_form.ville, "Ville : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.ville) }}
+{{ form_widget(edit_form.ville, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.adresse1, "Adresse : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.adresse1) }}
+{{ form_widget(edit_form.adresse1, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.adresse2, "Complément d'adresse : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.adresse2) }}
+{{ form_widget(edit_form.adresse2, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.codeGestionConcession, "Code de Gestion de Concession : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.codeGestionConcession) }}
+{{ form_widget(edit_form.codeGestionConcession, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+<div class="form-group">
+{{ form_label(edit_form.concessions, "Modifier une ou plusieurs concessions associée(s): ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.concessions) }}
+{{ form_widget(edit_form.concessions, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>              
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-4">
+{{ form_end(edit_form , {'attr': {'class': 'btn btn-default'} }) }}
+</div> 
+  </div>
+  <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-4">
+        {{ form(delete_form , {'attr': {'class': 'form-horizontal'} }) }}
+    </div>
+  </div>
+                    <ul class="record_actions">
+                        <li>
+                            <a href="{{ path('concessionaire') }}">
+                                <button class="btn btn-success">Retour à la liste</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+{% endblock %}

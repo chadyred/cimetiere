@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Cimetière{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('bundles/cimetiere/images/favicon.ico') }}" />
+      	{#ajout de tous les css #}
+		{% stylesheets filter='cssrewrite'
+		'@CimetiereBundle/Resources/public/css/style.css'
+		'@CimetiereBundle/Resources/public/css/jquery-ui.css'
+                '@CimetiereBundle/Resources/public/css/bootstrap.min.css'
+		'@CimetiereBundle/Resources/public/css/bootstrap-theme.min.css'
+		'@CimetiereBundle/Resources/public/css/zoomIt.css'
+                '@CimetiereBundle/Resources/public/css/font-awesome.css'
+                '@CimetiereBundle/Resources/public/css/plugins.min.css'
+                '@CimetiereBundle/Resources/public/css/jquery.fancyProductDesigner.css'
+                '@CimetiereBundle/Resources/public/css/jquery.fancyProductDesigner-fonts.css'
+		%}		
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all"/>
+		{% endstylesheets %}
+      	{#ajout de la datatable et du calendrier en javascript #}
+
+		{% block javascript  %}
+		{% javascripts
+		'@CimetiereBundle/Resources/public/js/jquery-1.10.1.min.js'
+		'@CimetiereBundle/Resources/public/js/jquery-ui.js'
+                '@CimetiereBundle/Resources/public/js/bootstrap.min.js'
+                '@CimetiereBundle/Resources/public/js/jquery-v1.7.2.js'
+                '@CimetiereBundle/Resources/public/js/jquery-ui-1.8.12.custom.min.js'
+                '@CimetiereBundle/Resources/public/js/zoomit.jquery.js'
+                '@CimetiereBundle/Resources/public/js/fabric.js'
+                '@CimetiereBundle/Resources/public/js/plugins.min.js'
+                '@CimetiereBundle/Resources/public/js/webfont.js'
+                '@CimetiereBundle/Resources/public/js/jquery.fancyProductDesigner.min.js'
+
+  		%} 
+        <script type="text/javascript" src="{{ asset_url }}"></script> 
+		{% endjavascripts %}
+
+		{% endblock %}		
+
+    </head> 
+    <body>
+
+{% block header %}
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header navigation">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand"  href="{{ path('index') }}">
+                    <img src="{{ asset('bundles/cimetiere/images/logo.png') }}" alt="Mairie de Voreppe" /> 
+                    Accueil
+                </a>
+
+            </div>    
+            <div class="navbar-collapse collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{path('carte')}}">
+                            Voir la carte
+                        </a> 
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ville<b class="caret"></b></a>  
+                        <ul class="dropdown-menu">
+                            <li><a href="{{path('ville')}}">Voir mes villes</a></li>
+                            <li><a href="{{path('ville_new')}}">Ajouter un ville</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cimetière<b class="caret"></b></a>  
+                        <ul class="dropdown-menu">
+                            <li><a href="{{path('cimetiere')}}">Voir les cimetières</a></li>
+                            <li><a href="{{path('cimetiere_new')}}">Ajouter un cimetière</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concession<b class="caret"></b></a>  
+                        <ul class="dropdown-menu">
+                            <li><a href="{{path('concession')}}">Voir les concessions</a></li>
+                            <li><a href="{{path('concession_new')}}">Ajouter une concession</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Concessionaire<b class="caret"></b></a>  
+                        <ul class="dropdown-menu">
+                            <li><a href="{{path('concessionaire')}}">Voir les concessionaires</a></li>
+                            <li><a href="{{path('concessionaire_new')}}">Ajouter un concessionaire</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Defunt<b class="caret"></b></a>  
+                        <ul class="dropdown-menu">
+                            <li><a href="{{path('defunt')}}">Voir les défunts</a></li>
+                            <li><a href="{{path('defunt_new')}}">Ajouter un défunt</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte <b class="caret"></b></a>  
+                        <ul class="dropdown-menu">
+                            <li><a>Connecté en tant que </a></li>
+
+                            <li>
+                                <a  href="./../admin/dashboard">
+                                    Tableau de bord
+                                </a>
+                            </li>
+                            <li><a href="#">
+                                    Déconnexion
+                                </a> 
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Connexion
+                                </a> 
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>           
+        <div id="header-wrapper">
+            <div id="alert-info" style="background-color:#0193CC;text-align: center;color:white;font-family: 'Arvo', serif;">
+                    {% for flashMessage in app.session.flashbag.get('notice') %}
+                        {{ flashMessage }}     
+                    {% endfor %}
+                </div>
+            </div>  
+            <script type="text/javascript" >
+                $('.dropdown-toggle').dropdown()
+                </script> 
+
+{% endblock %}
+
+{% block contenu %}
+{% endblock %}              
+            </body>
+        </html>

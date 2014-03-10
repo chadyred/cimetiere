@@ -1,0 +1,206 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+            <h1>Recherche de Concessions</h1>
+{{ form_start(search_form, {'attr': {'class': 'form-horizontal'} }) }}
+{{ form_errors(search_form) }}
+<div class="form-group">
+{{ form_label(search_form.codeGestionConcession, "Code de gestion de concession : ", {'label_attr': {'class': 'col-sm-3 control-label'} }) }}
+<div class="col-sm-3">
+{{ form_errors(search_form.codeGestionConcession) }}
+{{ form_widget(search_form.codeGestionConcession, {'attr': {'class': 'form-control','data-url': path('concession_ajaxcodeGestionConcession')} }) }}
+</div>
+{{ form_label(search_form.nbPlaces, "Nombre de places : ", {'label_attr': {'class': 'col-sm-3 control-label'} }) }}
+<div class="col-sm-3">
+{{ form_errors(search_form.nbPlaces) }}
+{{ form_widget(search_form.nbPlaces, {'attr': {'class': 'form-control','data-url': path('concession_ajaxnbPlaces')} }) }}         
+</div>
+{{ form_label(search_form.dateEcheance, "Date d'écheance : ", {'label_attr': {'class': 'col-sm-3 control-label'} }) }}
+<div class="col-sm-3">
+{{ form_errors(search_form.dateEcheance) }}
+{{ form_widget(search_form.dateEcheance) }}
+</div>   
+{{ form_label(search_form.dateDerniereAcquisition, "Date de dernière acquisition : ", {'label_attr': {'class': 'col-sm-3 control-label'} }) }}
+<div class="col-sm-3">
+{{ form_errors(search_form.dateDerniereAcquisition) }}
+{{ form_widget(search_form.dateDerniereAcquisition) }}
+</div>
+{{ form_label(search_form.numeroTitreConcession, "Numéro de titre de concession : ", {'label_attr': {'class': 'col-sm-3 control-label'} }) }}
+<div class="col-sm-3">
+{{ form_errors(search_form.numeroTitreConcession) }}
+{{ form_widget(search_form.numeroTitreConcession, {'attr': {'class': 'form-control','data-url': path('concession_ajaxnumeroTitreConcession')} }) }}
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.nature, "Nature : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(search_form.nature) }}
+{{ form_widget(search_form.nature, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.typeConcession, "Type de concession : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(search_form.typeConcession) }}
+{{ form_widget(search_form.typeConcession, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>            
+<div class="form-group hidden">
+{{ form_label(search_form.duree, "Durée : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(search_form.duree) }}
+{{ form_widget(search_form.duree, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.commentaire, "Commentaires : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(search_form.commentaire) }}
+{{ form_widget(search_form.commentaire, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.coordX, "Coordonnées X : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(search_form.coordX) }}
+{{ form_widget(search_form.coordX, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.coordY, "Coordonnées Y : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(search_form.coordY) }}
+{{ form_widget(search_form.coordY, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.angle, "Angle : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(search_form.angle) }}
+{{ form_widget(search_form.angle, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.prix, "Prix : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(search_form.prix) }}
+{{ form_widget(search_form.prix, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.url, "Url : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(search_form.url) }}
+{{ form_widget(search_form.url, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.hauteur, "Hauteur : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(search_form.hauteur) }}
+{{ form_widget(search_form.hauteur, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.largeur, "Largeur : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(search_form.largeur) }}
+{{ form_widget(search_form.largeur, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.cimetiere, "Cimetière : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(search_form.cimetiere) }}
+{{ form_widget(search_form.cimetiere, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.concessionaires, "Concessionaires : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(search_form.concessionaires) }}
+{{ form_widget(search_form.concessionaires, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div> 
+<div class="col-sm-offset-1 col-sm-3">
+{{ form_end(search_form , {'attr': {'class': 'btn btn-default'} }) }}
+</div>           
+</div> 
+</div>
+</div>   
+ <div class="row">
+        <div class="content-tab col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+            <h1>Liste des Concessions</h1>
+            <table class="table table-striped table-hover text-center">
+                <thead>
+                    <tr>
+                        <th>Code de gestion de concession</th>
+                        <th>Nombre de places</th>
+                        <th>Date échéance</th>
+                        <th>Date de dernière acquisition</th>
+                        <th>Numéro de titre de concession</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('concession_show', { 'id': entity.id }) }}">{{ entity.codeGestionConcession }}</a></td>
+                            <td>{{ entity.nbPlaces }}</td>
+                            <td>{% if entity.dateEcheance %}{{ entity.dateEcheance|date('d-m-Y H:i:s') }}{% endif %}</td>
+                            <td>{% if entity.dateDerniereAcquisition %}{{ entity.dateDerniereAcquisition|date('d-m-Y H:i:s') }}{% endif %}</td>
+                            <td>{{ entity.numeroTitreConcession }}</td>
+
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('concession_show', { 'id': entity.id }) }}"><button class="btn btn-info btn-sm">Visualiser</button></a>
+                                    </li>
+                                    <br/>
+                                    <li>
+                                        <a href="{{ path('concession_edit', { 'id': entity.id }) }}"><button class="btn btn-warning btn-sm">Éditer</button></a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation pagination">
+{{ knp_pagination_render(entities,null, {}, {'alignment': 'center'}) }}
+                 </div>
+                <ul>
+                    <li>
+                        <a href="{{ path('concession_new') }}">
+                            <button class="btn btn-success">Créer un nouveau cimetière</button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<script>
+    $(document).ready(function() {
+    var attr = $('#cimetiere_bundle_concession_codeGestionConcession').attr('data-url');
+    $("#cimetiere_bundle_concession_codeGestionConcession").autocomplete({
+        minLength: 1,
+        source: attr
+    });
+    
+    var attr = $('#cimetiere_bundle_concession_nbPlaces').attr('data-url');
+    $("#cimetiere_bundle_concession_nbPlaces").autocomplete({
+        minLength: 1,
+        source: attr
+    });
+   
+    var attr = $('#cimetiere_bundle_concession_numeroTitreConcession').attr('data-url');
+    $("#cimetiere_bundle_concession_numeroTitreConcession").autocomplete({
+        minLength: 1,
+        source: attr
+    });
+});
+</script>
+    {% endblock %}

@@ -1,0 +1,30 @@
+concessionaire:
+    pattern:  /
+    defaults: { _controller: "CimetiereBundle:Concessionaire:index" }
+
+concessionaire_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CimetiereBundle:Concessionaire:show" }
+
+concessionaire_new:
+    pattern:  /new
+    defaults: { _controller: "CimetiereBundle:Concessionaire:new" }
+
+concessionaire_create:
+    pattern:  /create
+    defaults: { _controller: "CimetiereBundle:Concessionaire:create" }
+    requirements: { _method: post }
+
+concessionaire_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CimetiereBundle:Concessionaire:edit" }
+
+concessionaire_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CimetiereBundle:Concessionaire:update" }
+    requirements: { _method: post|put }
+
+concessionaire_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CimetiereBundle:Concessionaire:delete" }
+    requirements: { _method: post|delete }

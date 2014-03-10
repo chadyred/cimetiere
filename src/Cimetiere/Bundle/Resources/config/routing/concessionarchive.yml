@@ -1,0 +1,30 @@
+concessionarchive:
+    pattern:  /
+    defaults: { _controller: "CimetiereBundle:ConcessionArchive:index" }
+
+concessionarchive_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CimetiereBundle:ConcessionArchive:show" }
+
+concessionarchive_new:
+    pattern:  /new
+    defaults: { _controller: "CimetiereBundle:ConcessionArchive:new" }
+
+concessionarchive_create:
+    pattern:  /create
+    defaults: { _controller: "CimetiereBundle:ConcessionArchive:create" }
+    requirements: { _method: post }
+
+concessionarchive_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CimetiereBundle:ConcessionArchive:edit" }
+
+concessionarchive_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CimetiereBundle:ConcessionArchive:update" }
+    requirements: { _method: post|put }
+
+concessionarchive_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CimetiereBundle:ConcessionArchive:delete" }
+    requirements: { _method: post|delete }

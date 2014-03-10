@@ -1,0 +1,67 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+            <div class="content-tab col-sm-10 col-md-10 col-lg-10 col-lg-offset-1">
+{{ form_start(form, {'attr': {'class': 'form-horizontal'} }) }}
+<div class="form-group">
+{{ form_label(form.nomCimetiere, "Nom du cimetière : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.nomCimetiere) }}
+{{ form_widget(form.nomCimetiere, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+{{ form_errors(form) }}
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+        {{ form_end(form) }}
+    </div>
+</div>
+            </div>
+        </div>
+    <div class="row">
+        <div class="content-tab col-sm-10 col-md-10 col-lg-10 col-lg-offset-1">
+            <div class="content-tab col-sm-3 col-md-3 col-lg-3">
+                <table class="table table-striped table-hover text-center ">
+                    <thead>
+                        <tr>
+                            <td align="center" style="vertical-align: middle;">
+                                <div class="gwt-Label">Legende DnD : </div>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td align="center" style="vertical-align: middle;">
+                                <img src="{{ asset("bundles/cimetiere/images/concessionAVendre.png")}}" class="gwt-Image">
+                                <div class="gwt-Label">Concession à vendre</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="vertical-align: middle;">
+                                <img src="{{ asset("bundles/cimetiere/images/ConcessionEnCours.png")}}" class="gwt-Image">
+                                <div class="gwt-Label">Concession vendue</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="vertical-align: middle;">
+                                <img src="{{ asset("bundles/cimetiere/images/concessionAEcheance.png")}}" class="gwt-Image">
+                                <div class="gwt-Label">Concession à echeance</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>               
+            <div id="carte" class="col-sm-7 col-md-7 col-lg-7 col-sm-offset-1">
+{% for entity in entities %}
+                    <img id="{{ entity.id}}" class="col-lg-4" src="{{ asset(entity.url) }}" alt ="{{ entity.nomCimetiere }}"/>
+{% endfor %}
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}

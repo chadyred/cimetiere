@@ -1,0 +1,229 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-10 col-md-10 col-lg-10 col-sm-offset-1">
+            <div class="col-sm-4">
+                <table class="table table-striped table-hover text-center ">
+                    <thead>
+                        <tr>
+                            <th colspan="3">
+                                Legende DnD : 
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align="center" style="vertical-align: middle;">
+                                <div class="">
+                                    <img src="{{ asset("bundles/cimetiere/images/concessionAVendre.png")}}"/>
+                                </div>
+                                <div class="gwt-Label">Concession à vendre</div>
+                            </td>
+                            <td align="center" style="vertical-align: middle;">
+                                <div class=""><img src="{{ asset("bundles/cimetiere/images/ConcessionEnCours.png")}}"/></div>
+                                <div class="gwt-Label">Concession vendue</div>
+                            </td>
+                            <td align="center" style="vertical-align: middle;">
+                                <div class=""><img src="{{ asset("bundles/cimetiere/images/concessionAEcheance.png")}}"/></div>
+                                <div class="gwt-Label">Concession à echeance</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-4">
+
+            </div>   
+            <div class="col-sm-4">
+                <table class="table table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th colspan="2">
+                                Zoom
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align="center" style="vertical-align: middle;">
+                                <div  class="">
+                                    <img src="{{ asset("bundles/cimetiere/images/zoomMoins.png")}}"/>
+                                </div>
+                            </td>
+
+                            <td align="center" style="vertical-align: middle;">
+                                <div class="">
+                                    <img src="{{ asset("bundles/cimetiere/images/zoomPlus.png")}}"/>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>    
+            </div>    
+        </div>
+    </div>
+     {#  <div class="row">
+        <div class="content-tab">
+         <div id="carte" class="">
+                <a href="#" class="droppable zoomIt example-1" title="">
+                    <img id="{{ entity.id}}" class="img_carte" src="{{ asset(entity.url) }}" alt="{{ entity.nomCimetiere }}"/>
+                </a>
+            </div>
+            </div>
+        </div>#}
+    <div class="row">
+
+        <div class="content-tab col-lg-10 col-lg-offset-1">
+            <table class="table table-striped table-hover text-center">
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            Ajouter un élément :
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="center" style="vertical-align: middle;">
+                            <div  id="concessionAVendre" class="draggable">
+                            </div>
+                            <div class="gwt-Label">Concession à vendre</div>
+                        </td>
+
+                        <td align="center" style="vertical-align: middle;">
+                            <div id="concessionEnCours" class="draggable">
+                            </div>
+                            <div class="gwt-Label">Concession vendue</div>
+                        </td>
+
+                        <td align="center" style="vertical-align: middle;">
+                            <div id="concessionAEcheance" class="draggable">
+                            </div>
+                            <div class="gwt-Label">Concession à echeance</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="map"> 
+                <div id="upside_canvas" class="droppable">yooo</div>
+                <img id="{{ entity.id}}" class="img_carte img-responsive" src="{{ asset(entity.url) }}" alt="{{ entity.nomCimetiere }}"/>
+                <canvas id="outside_canvas " height="500" width="500"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="content-tab col-sm-10 col-md-10 col-lg-10 col-sm-offset-1">    
+            <ul class="record_actions">
+                <li>
+                    <a href="{{ path('carte') }}">
+                        <button class="btn btn-success">Retour à la liste</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>    
+</div>
+<script language="javascript" type="text/javascript">
+    var c = document.getElementById("outside_canvas");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();      // Début du chemin
+        {% for ent in entities %}
+            {% if ent.typeConcession == "F"%}
+    ctx.fillStyle = "red";
+            {% elseif ent.typeConcession =="C" %}
+    ctx.fillStyle = "black";
+             {% elseif ent.typeConcession =="I" %}
+    ctx.fillStyle = "blue";
+            {% else %}
+    ctx.fillStyle = "green";
+                {% endif %}
+    //ctx.rotate(*Math.PI/180);
+    ctx.fillRect({{ent.coordX}},{{ent.coordY}}, {{ent.hauteur}},{{ent.url}});
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 1;
+    ctx.strokeRect({{ent.coordX}},{{ent.coordY}}, {{ent.hauteur}},{{ent.url}});
+        {% endfor %}
+
+    ctx.stroke();
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function($) {
+            $(".droppable").droppable({
+                accept: '.draggable',
+                drop: function(event, ui) {
+                    var $clone = ui.helper.clone();
+                    if (!$clone.is('.inside-droppable')) {
+                        $(this).append($clone.addClass('inside-droppable').draggable({
+                            containment: '.droppable',
+                            tolerance: 'fit',
+                            position: 'relative'
+                        }));
+
+                        $clone.resizable({
+                            animate: 'true',
+                            ghost: 'true',
+                            handles: 'ne, nw, se, sw',
+                        });
+                        $clone.dblclick(function() {
+                            $i = Math.floor((Math.random()*3)+1);
+                            if ($i == 1) {
+                                $clone.toggleClass("valred");
+                                $i++;
+                            } else if ($i == 2) {
+                                $clone.toggleClass("valback");
+                                $i++;
+                            } else if ($i == 3) {
+                                $clone.toggleClass("valgreen");
+                                $i++;
+                            } 
+                        });
+
+
+                    }
+                }
+            });
+            $(".draggable").draggable({
+                helper: 'clone',
+                revert: "invalid"
+            });
+
+
+            $('.draggable').bind('dragstop', function(event, ui) {
+                if ($(ui.helper).hasClass('rotator'))
+                    return true;
+                applyRotation();
+            });
+
+            // Create handle dynamically
+            $('<div class="rotator"></div>').appendTo(".draggable").addClass('handler').css({
+                'position': 'absolute',
+                'top': -15,
+                'left': 20,
+                'height': 10,
+                'width': 10,
+                'background': 'green'
+            });
+
+
+            function applyRotation() {
+                $('.handler').draggable({
+                    opacity: 0.01,
+                    helper: 'clone',
+                    drag: function(event, ui) {
+                        var rotateCSS = 'rotate(' + ui.position.left + 'deg)';
+
+                        $(this).parent().css({
+                            '-moz-transform': rotateCSS,
+                            '-webkit-transform': rotateCSS
+                        });
+                    }
+                });
+            }
+        });
+
+        </script>
+{% endblock %}

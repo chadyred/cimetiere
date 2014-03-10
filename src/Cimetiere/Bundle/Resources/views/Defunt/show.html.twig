@@ -1,0 +1,93 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+            <h1>Défunt</h1>
+            <table class="table table-striped table-hover">
+                <tbody>
+         
+            <tr>
+                <th>Code de gestion de concession</th>
+                <td>{{ entity.codeGestionConcession }}</td>
+            </tr>
+            <tr>
+                <th>Numéro d'ordre</th>
+                <td>{{ entity.numeroOrdre }}</td>
+            </tr>
+            <tr>
+                <th>Nom et prénom</th>
+                <td>{{ entity.nomPrenom }}</td>
+            </tr>
+            <tr>
+                <th>Nom de jeune fille</th>
+                <td>{{ entity.nomJF }}</td>
+            </tr>
+            <tr>
+                <th>Date de naissance</th>
+                <td>{{ entity.dateNaissance|date('d-m-Y H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Lieu de naissance</th>
+                <td>{{ entity.lieuNaissance }}</td>
+            </tr>
+            <tr>
+                <th>Date de décès</th>
+                <td>{{ entity.dateDeces|date('d-m-Y H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Lieu de décès</th>
+                <td>{{ entity.lieuDeces }}</td>
+            </tr>
+            <tr>
+                <th>Date d'hinumation</th>
+                <td>{{ entity.dateHinumation|date('d-m-Y H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Date d'exumation</th>
+                <td>{{ entity.dateExumation|date('d-m-Y H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Date de réduction</th>
+                <td>{{ entity.dateReduction|date('d-m-Y H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Enveloppe funéraire</th>
+                <td>{{ entity.enveloppeFuneraire }}</td>
+            </tr>
+            <tr>
+                <th>Entreprise funéraire</th>
+                <td>{{ entity.entrepriseFuneraire }}</td>
+            </tr>
+            <tr>
+                <th>Marbrier</th>
+                <td>{{ entity.marbrier }}</td>
+            </tr>
+            <tr>
+                <th>Opposition de crémation</th>
+                <td>{{ entity.oppositionCremation }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire(s)</th>
+                <td>{{ entity.commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Concession</th>
+                <td>{{ entity.concession }}</td>
+            </tr>
+        </tbody>
+    </table>
+            <div class="col-sm-4 col-md-4  col-lg-4">
+                <a href="{{ path('defunt', { 'id': entity.id }) }}"><button class="btn btn-success btn-large">Retour à la liste</button></a>
+            </div>
+            <div class="col-sm-4 col-md-4  col-lg-4">
+                <a href="{{ path('defunt_edit', { 'id': entity.id }) }}"><button class="btn btn-warning btn-large">Éditer</button></a>
+            </div>
+            <div class="col-sm-4 col-md-4  col-lg-4">
+{{ form(delete_form) }}
+                </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

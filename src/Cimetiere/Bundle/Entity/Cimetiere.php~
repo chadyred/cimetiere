@@ -1,0 +1,197 @@
+<?php
+
+namespace Cimetiere\Bundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Cimetiere
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Cimetiere\Bundle\Entity\CimetiereRepository")
+ */
+class Cimetiere
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codeCimetiere", type="string", length=2)
+     */
+    private $codeCimetiere;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomCimetiere", type="string", length=40)
+     */
+    private $nomCimetiere;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=50)
+     */
+    private $url;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Cimetiere\Bundle\Entity\Ville", inversedBy="cimetieres", cascade={"persist","remove"})
+     */
+    private $ville;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Cimetiere\Bundle\Entity\Concession", mappedBy="cimetiere")
+     */
+    private $concessions;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set codeCimetiere
+     *
+     * @param string $codeCimetiere
+     * @return Cimetiere
+     */
+    public function setCodeCimetiere($codeCimetiere)
+    {
+        $this->codeCimetiere = $codeCimetiere;
+
+        return $this;
+    }
+
+    /**
+     * Get codeCimetiere
+     *
+     * @return string 
+     */
+    public function getCodeCimetiere()
+    {
+        return $this->codeCimetiere;
+    }
+
+    /**
+     * Set nomCimetiere
+     *
+     * @param string $nomCimetiere
+     * @return Cimetiere
+     */
+    public function setNomCimetiere($nomCimetiere)
+    {
+        $this->nomCimetiere = $nomCimetiere;
+
+        return $this;
+    }
+
+    /**
+     * Get nomCimetiere
+     *
+     * @return string 
+     */
+    public function getNomCimetiere()
+    {
+        return $this->nomCimetiere;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return Cimetiere
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     * @return Cimetiere
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string 
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->concessions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add concessions
+     *
+     * @param \Cimetiere\Bundle\Entity\Concession $concessions
+     * @return Cimetiere
+     */
+    public function addConcession(\Cimetiere\Bundle\Entity\Concession $concessions)
+    {
+        $this->concessions[] = $concessions;
+
+        return $this;
+    }
+
+    /**
+     * Remove concessions
+     *
+     * @param \Cimetiere\Bundle\Entity\Concession $concessions
+     */
+    public function removeConcession(\Cimetiere\Bundle\Entity\Concession $concessions)
+    {
+        $this->concessions->removeElement($concessions);
+    }
+
+    /**
+     * Get concessions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getConcessions()
+    {
+        return $this->concessions;
+    }
+}

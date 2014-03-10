@@ -1,0 +1,105 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+            <h1>Recherche d'un Cimetière</h1>
+{{ form_start(search_form, {'attr': {'class': 'form-horizontal'} }) }}
+{{ form_errors(search_form) }}
+ <div class="form-group">
+{{ form_label(search_form.codeCimetiere, "Code du cimetière : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-2">
+{{ form_errors(search_form.codeCimetiere) }}
+{{ form_widget(search_form.codeCimetiere, {'attr': {'class': 'form-control','data-url': path('cimetiere_ajaxCodeCimetiere')} }) }}
+</div>
+{{ form_label(search_form.nomCimetiere, "Nom du cimetière : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-2">
+{{ form_errors(search_form.nomCimetiere) }}
+{{ form_widget(search_form.nomCimetiere, {'attr': {'class': 'form-control','data-url': path('cimetiere_ajaxNomCimetiere')} }) }}         
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.url, "Url de l'image : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-2">
+{{ form_errors(search_form.url) }}
+{{ form_widget(search_form.url, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group hidden">
+{{ form_label(search_form.ville, "Nom de la ville : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-2">
+{{ form_errors(search_form.ville) }}
+{{ form_widget(search_form.ville, {'attr': {'class': 'form-control'} }) }}
+</div> 
+</div>
+<div class="col-sm-offset-1 col-sm-2">
+{{ form_end(search_form , {'attr': {'class': 'btn btn-default'} }) }}
+</div>          
+</div>
+        </div>
+        </div>
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+            <h1>Liste Cimetières</h1>
+            <table class="table table-striped table-hover text-center">
+                <thead>
+                    <tr>
+                        <th>Code du cimetière</th>
+                        <th>Nom du cimetière</th>
+                        <th>Carte</th>
+                        <th>Ville</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {% for entity in entities %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('cimetiere_show', { 'id': entity.id }) }}">{{ entity.codeCimetiere }}</a>
+                            </td>
+                            <td>{{ entity.nomCimetiere }}</td>
+                            <td><img class="img_cimetiere" src="{{ asset(entity.url) }}" alt ="{{ entity.nomCimetiere }}"/></td>
+                            <td>{{ entity.ville.nomVille }}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('cimetiere_show', { 'id': entity.id }) }}"><button class="btn btn-info btn-sm">Visualiser</button></a>
+                                    </li>
+                                    <br/>
+                                    <li>
+                                        <a href="{{ path('cimetiere_edit', { 'id': entity.id }) }}"><button class="btn btn-warning btn-sm">Éditer</button></a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+        {% endfor %}
+                    </tbody>
+                </table>
+
+                <ul>
+                    <li>
+                        <a href="{{ path('cimetiere_new') }}">
+                            <button class="btn btn-success">Ajouter un nouveau cimetière</button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<script>
+    $(document).ready(function() {
+    var attr = $('#cimetiere_bundle_cimetiere_nomCimetiere').attr('data-url');
+    $("#cimetiere_bundle_cimetiere_nomCimetiere").autocomplete({
+        minLength: 1,
+        source: attr
+    });
+    
+    var attr = $('#cimetiere_bundle_cimetiere_codeCimetiere').attr('data-url');
+    $("#cimetiere_bundle_cimetiere_codeCimetiere").autocomplete({
+        minLength: 1,
+        source: attr
+    });
+});
+</script>
+
+    {% endblock %}

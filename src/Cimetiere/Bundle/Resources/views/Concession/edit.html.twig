@@ -1,0 +1,161 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12  col-lg-10 col-lg-offset-1">
+            <h1>Modifier un concession</h1>
+{{ form_start(edit_form, {'attr': {'class': 'form-horizontal'} }) }}
+{{ form_errors(edit_form) }}
+<div class="form-group">
+{{ form_label(edit_form.codeGestionConcession, "Code de gestion de concession : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.codeGestionConcession) }}
+{{ form_widget(edit_form.codeGestionConcession, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.nature, "Nature : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.nature) }}
+{{ form_widget(edit_form.nature, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.typeConcession, "Type de concession : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.typeConcession) }}
+{{ form_widget(edit_form.typeConcession, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.nbPlaces, "Nombre de places : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.nbPlaces) }}
+{{ form_widget(edit_form.nbPlaces, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+            <div class="form-group">
+{{ form_label(edit_form.dateEcheance, "Date d'écheance : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.dateEcheance) }}
+{{ form_widget(edit_form.dateEcheance) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.dateDerniereAcquisition, "Date de derniere Acquisition : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.dateDerniereAcquisition) }}
+{{ form_widget(edit_form.dateDerniereAcquisition) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.duree, "Durée : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.duree) }}
+{{ form_widget(edit_form.duree, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.numeroTitreConcession, "Numéro et Titre de  Concession : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.numeroTitreConcession) }}
+{{ form_widget(edit_form.numeroTitreConcession, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+            <div class="form-group">
+{{ form_label(edit_form.commentaire, "Commentaire : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.commentaire) }}
+{{ form_widget(edit_form.commentaire, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.coordX, "Coordonnées X : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.coordX) }}
+{{ form_widget(edit_form.coordX, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.coordY, "Coordonnées Y : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.coordY) }}
+{{ form_widget(edit_form.coordY, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.angle, "Angle : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.angle) }}
+{{ form_widget(edit_form.angle, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+            <div class="form-group">
+{{ form_label(edit_form.prix, "Prix : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.prix) }}
+{{ form_widget(edit_form.prix, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.url, "Url : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.url) }}
+{{ form_widget(edit_form.url, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.hauteur, "Hauteur : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.hauteur) }}
+{{ form_widget(edit_form.hauteur, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.largeur, "Largeur : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.largeur) }}
+{{ form_widget(edit_form.largeur, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+<div class="form-group">
+{{ form_label(edit_form.cimetiere, "Cimetière : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.cimetiere) }}
+{{ form_widget(edit_form.cimetiere, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+<div class="form-group">
+{{ form_label(edit_form.concessionaires, "Modifier un ou plusieurs concessionaire(s) associé(s) : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.concessionaires) }}
+{{ form_widget(edit_form.concessionaires, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>              
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-4">
+{{ form_end(edit_form , {'attr': {'class': 'btn btn-default'} }) }}
+</div> 
+  </div>
+  <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-4">
+        {{ form(delete_form , {'attr': {'class': 'form-horizontal'} }) }}
+    </div>
+  </div>
+              <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+                    <ul class="record_actions">
+                        <li>
+                            <a href="{{ path('concession') }}">
+                                <button class="btn btn-success">Retour à la liste</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+{% endblock %}

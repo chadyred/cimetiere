@@ -1,0 +1,57 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+            <h1>Liste des Concessionaires</h1>
+            <table class="table table-striped table-hover text-center">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Code Postal</th>
+                        <th>Ville</th>
+                        <th>Adresse</th>
+                        <th>Code de gestion de concession</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('concessionaire_show', { 'id': entity.id }) }}">{{ entity.titre }}{{ entity.nomPrenom }}</a></td>
+                            <td>{{ entity.cp }}</td>
+                            <td>{{ entity.ville }}</td>
+                            <td>{{ entity.adresse1 }}</td>
+                            <td>{{ entity.codeGestionConcession }}</td>
+
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('concessionaire_show', { 'id': entity.id }) }}"><button class="btn btn-info btn-sm">Visualiser</button></a>
+                                    </li>
+                                    <br/>
+                                    <li>
+                                        <a href="{{ path('concessionaire_edit', { 'id': entity.id }) }}"><button class="btn btn-warning btn-sm">Éditer</button></a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation pagination">
+{{ knp_pagination_render(entities,null, {}, {'alignment': 'center'}) }}
+                 </div>
+
+                    <ul>
+                        <li>
+                            <a href="{{ path('concessionaire_new') }}">
+                                <button class="btn btn-success">Créer un nouveau cimetière</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

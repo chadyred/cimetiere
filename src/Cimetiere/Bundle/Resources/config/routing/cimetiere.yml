@@ -1,0 +1,43 @@
+cimetiere:
+    pattern:  /
+    defaults: { _controller: "CimetiereBundle:Cimetiere:index" }
+
+cimetiere_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CimetiereBundle:Cimetiere:show" }
+
+cimetiere_new:
+    pattern:  /new
+    defaults: { _controller: "CimetiereBundle:Cimetiere:new" }
+
+cimetiere_create:
+    pattern:  /create
+    defaults: { _controller: "CimetiereBundle:Cimetiere:create" }
+    requirements: { _method: post }
+
+cimetiere_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CimetiereBundle:Cimetiere:edit" }
+
+cimetiere_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CimetiereBundle:Cimetiere:update" }
+    requirements: { _method: post|put }
+
+cimetiere_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CimetiereBundle:Cimetiere:delete" }
+    requirements: { _method: post|delete }
+    
+cimetiere_ajaxCodeCimetiere:
+    pattern: /ajaxCodeCimetiere
+    defaults: { _controller: CimetiereBundle:Cimetiere:getAjaxResultsCodeCimetiere}
+    requirements:
+        _method: GET  
+        
+cimetiere_ajaxNomCimetiere:
+    pattern: /ajaxNomCimetiere
+    defaults: { _controller: CimetiereBundle:Cimetiere:getAjaxResultsNomCimetiere}
+    requirements:
+        _method: GET    
+        

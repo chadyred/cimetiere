@@ -1,0 +1,39 @@
+index:
+    pattern: /index
+    defaults: { _controller: CimetiereBundle:Index:index }
+    
+cimetiere:
+    resource: "@CimetiereBundle/Resources/config/routing.yml"
+    prefix:   /
+
+CimetiereBundle_cimetiere:
+    resource: "@CimetiereBundle/Resources/config/routing/cimetiere.yml"
+    prefix: /cimetiere
+
+CimetiereBundle_concession:
+    resource: "@CimetiereBundle/Resources/config/routing/concession.yml"
+    prefix: /concession
+
+CimetiereBundle_concessionArchive:
+    resource: "@CimetiereBundle/Resources/config/routing/concessionarchive.yml"
+    prefix: /concessionArchive    
+
+CimetiereBundle_concessionaire:
+    resource: "@CimetiereBundle/Resources/config/routing/concessionaire.yml"
+    prefix: /concessionaire
+
+CimetiereBundle_concessionaireArchive:
+    resource: "@CimetiereBundle/Resources/config/routing/concessionairearchive.yml"
+    prefix: /concessionaireArchive
+
+CimetiereBundle_defunt:
+    resource: "@CimetiereBundle/Resources/config/routing/defunt.yml"
+    prefix: /defunt   
+
+CimetiereBundle_defuntArchive:
+    resource: "@CimetiereBundle/Resources/config/routing/defuntarchive.yml"
+    prefix: /defuntArchive
+    
+CimetiereBundle_ville:
+    resource: "@CimetiereBundle/Resources/config/routing/ville.yml"
+    prefix: /ville    

@@ -1,0 +1,4 @@
+sudo ./cacheclear
+php app/console doctrine:schema:drop --force
+php app/console doctrine:schema:update --force
+sudo ./cacheclear

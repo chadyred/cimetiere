@@ -1,0 +1,157 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12  col-lg-10 col-lg-offset-1">
+    <h1>Ajouter une concession </h1>
+
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'} }) }}
+{{ form_errors(form) }}
+<div class="form-group">
+{{ form_label(form.codeGestionConcession, "Code de gestion de concession : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.codeGestionConcession) }}
+{{ form_widget(form.codeGestionConcession, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(form.nature, "Nature : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.nature) }}
+{{ form_widget(form.nature, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(form.typeConcession, "Type de concession : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.typeConcession) }}
+{{ form_widget(form.typeConcession, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(form.nbPlaces, "Nombre de places : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.nbPlaces) }}
+{{ form_widget(form.nbPlaces, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+            <div class="form-group">
+{{ form_label(form.dateEcheance, "Date d'échéance : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.dateEcheance) }}
+{{ form_widget(form.dateEcheance) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(form.dateDerniereAcquisition, "Date de dernière acquisition : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.dateDerniereAcquisition) }}
+{{ form_widget(form.dateDerniereAcquisition) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(form.duree, "Durée : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.duree) }}
+{{ form_widget(form.duree, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(form.numeroTitreConcession, "Numéro et Titre de  Concession : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.numeroTitreConcession) }}
+{{ form_widget(form.numeroTitreConcession, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+<div class="form-group">
+{{ form_label(form.commentaire, "Commentaire(s) : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.commentaire) }}
+{{ form_widget(form.commentaire, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(form.coordX, "Coordonnées X : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.coordX) }}
+{{ form_widget(form.coordX, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(form.coordY, "Coordonnées Y : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.coordY) }}
+{{ form_widget(form.coordY, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(form.angle, "Angle : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.angle) }}
+{{ form_widget(form.angle, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+<div class="form-group">
+{{ form_label(form.prix, "Prix : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.prix) }}
+{{ form_widget(form.prix, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(form.url, "Url : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.url) }}
+{{ form_widget(form.url, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(form.hauteur, "Hauteur : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.hauteur) }}
+{{ form_widget(form.hauteur, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(form.largeur, "Largeur : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.largeur) }}
+{{ form_widget(form.largeur, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+<div class="form-group">
+{{ form_label(form.cimetiere, "Cimetière : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.cimetiere) }}
+{{ form_widget(form.cimetiere, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+<div class="form-group">
+{{ form_label(form.concessionaires, "Concessionaires : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(form.concessionaires) }}
+{{ form_widget(form.concessionaires, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>    
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-4">
+{{ form_end(form , {'attr': {'class': 'btn btn-default'} }) }}
+</div> 
+</div>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+    <ul class="record_actions">
+                        <li>
+                            <a href="{{ path('concession') }}">
+                                <button class="btn btn-success">Retour à la liste</button>
+                            </a>
+                        </li>
+                    </ul>
+  </div>
+</div>
+</div>
+{% endblock %}

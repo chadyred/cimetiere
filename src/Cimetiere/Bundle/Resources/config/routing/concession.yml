@@ -1,0 +1,48 @@
+concession:
+    pattern:  /
+    defaults: { _controller: "CimetiereBundle:Concession:index" }
+
+concession_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CimetiereBundle:Concession:show" }
+
+concession_new:
+    pattern:  /new
+    defaults: { _controller: "CimetiereBundle:Concession:new" }
+
+concession_create:
+    pattern:  /create
+    defaults: { _controller: "CimetiereBundle:Concession:create" }
+    requirements: { _method: post }
+
+concession_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CimetiereBundle:Concession:edit" }
+
+concession_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CimetiereBundle:Concession:update" }
+    requirements: { _method: post|put }
+
+concession_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CimetiereBundle:Concession:delete" }
+    requirements: { _method: post|delete }
+
+concession_ajaxcodeGestionConcession:
+    pattern: /ajaxcodeGestionConcession
+    defaults: { _controller: CimetiereBundle:Concession:getAjaxResultscodeGestionConcession}
+    requirements:
+        _method: GET  
+        
+concession_ajaxnbPlaces:
+    pattern: /ajaxnbPlaces
+    defaults: { _controller: CimetiereBundle:Concession:getAjaxResultsnbPlaces}
+    requirements:
+        _method: GET   
+        
+concession_ajaxnumeroTitreConcession:
+    pattern: /ajaxnumeroTitreConcession
+    defaults: { _controller: CimetiereBundle:Concession:getAjaxResultsnumeroTitreConcession}
+    requirements:
+        _method: GET

@@ -1,0 +1,56 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+            <h1>Concessionaire</h1>
+            <table class="table table-striped table-hover">
+                <tbody>
+            <tr>
+                <th>Titre</th>
+                <td>{{ entity.titre }}</td>
+            </tr>
+            <tr>
+                <th>Nom et prénom</th>
+                <td>{{ entity.nomPrenom }}</td>
+            </tr>
+            <tr>
+                <th>Nom de jeune fille</th>
+                <td>{{ entity.nomJF }}</td>
+            </tr>
+            <tr>
+                <th>Code postal</th>
+                <td>{{ entity.cp }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ entity.ville }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ entity.adresse1 }}</td>
+            </tr>
+            <tr>
+                <th>Complément d'adresse</th>
+                <td>{{ entity.adresse2 }}</td>
+            </tr>
+            <tr>
+                <th>Code de gestion de concession</th>
+                <td>{{ entity.codeGestionConcession }}</td>
+            </tr>
+        </tbody>
+    </table>
+            <div class="col-sm-4 col-md-4  col-lg-4">
+                <a href="{{ path('concessionaire', { 'id': entity.id }) }}"><button class="btn btn-success btn-large">Retour à la liste</button></a>
+            </div>
+            <div class="col-sm-4 col-md-4  col-lg-4">
+                <a href="{{ path('concessionaire_edit', { 'id': entity.id }) }}"><button class="btn btn-warning btn-large">Éditer</button></a>
+            </div>
+            <div class="col-sm-4 col-md-4  col-lg-4">
+{{ form(delete_form) }}
+                </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

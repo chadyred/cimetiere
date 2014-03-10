@@ -1,0 +1,12 @@
+carte:
+    pattern: /carte
+    defaults: { _controller: CimetiereBundle:Carte:index }
+    
+carte_find:
+    pattern:  /carte_find
+    defaults: { _controller: "CimetiereBundle:Carte:find" }
+    requirements: { _method: post }
+    
+carte_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CimetiereBundle:Carte:show" }    

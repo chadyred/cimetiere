@@ -1,0 +1,40 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+            <h1>Cimetière</h1>
+            <table class="table table-striped table-hover">
+                <tbody>
+                    <tr>
+                        <th>Code du cimetière :</th>
+                        <td>{{ entity.codeCimetiere }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom du cimetière :</th>
+                        <td>{{ entity.nomCimetiere }}</td>
+                    </tr>
+                    <tr>
+                        <th>Carte :</th>
+                        <td><img class="img_cimetiere_large" src="{{ asset(entity.url)}}" alt ="{{ entity.nomCimetiere }}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Ville :</th>
+                        <td>{{ entity.ville }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="col-sm-4 col-md-4  col-lg-4">
+                <a href="{{ path('cimetiere', { 'id': entity.id }) }}"><button class="btn btn-success btn-large">Retour à la liste</button></a>
+            </div>
+            <div class="col-sm-4 col-md-4  col-lg-4">
+                <a href="{{ path('cimetiere_edit', { 'id': entity.id }) }}"><button class="btn btn-warning btn-large">Éditer</button></a>
+            </div>
+            <div class="col-sm-4 col-md-4  col-lg-4">
+{{ form(delete_form) }}
+                </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

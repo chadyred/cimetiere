@@ -1,0 +1,92 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>DefuntArchive</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Codegestionconcession</th>
+                <td>{{ entity.codeGestionConcession }}</td>
+            </tr>
+            <tr>
+                <th>Numeroordre</th>
+                <td>{{ entity.numeroOrdre }}</td>
+            </tr>
+            <tr>
+                <th>Nomprenom</th>
+                <td>{{ entity.nomPrenom }}</td>
+            </tr>
+            <tr>
+                <th>Nomjf</th>
+                <td>{{ entity.nomJF }}</td>
+            </tr>
+            <tr>
+                <th>Datenaissance</th>
+                <td>{{ entity.dateNaissance|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Lieunaissance</th>
+                <td>{{ entity.lieuNaissance }}</td>
+            </tr>
+            <tr>
+                <th>Datedeces</th>
+                <td>{{ entity.dateDeces|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Lieudeces</th>
+                <td>{{ entity.lieuDeces }}</td>
+            </tr>
+            <tr>
+                <th>Datehinumation</th>
+                <td>{{ entity.dateHinumation|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dateexumation</th>
+                <td>{{ entity.dateExumation|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Datereduction</th>
+                <td>{{ entity.dateReduction|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Enveloppefuneraire</th>
+                <td>{{ entity.enveloppeFuneraire }}</td>
+            </tr>
+            <tr>
+                <th>Entreprisefuneraire</th>
+                <td>{{ entity.entrepriseFuneraire }}</td>
+            </tr>
+            <tr>
+                <th>Marbrier</th>
+                <td>{{ entity.marbrier }}</td>
+            </tr>
+            <tr>
+                <th>Oppositioncremation</th>
+                <td>{{ entity.oppositionCremation }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ entity.commentaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('defuntarchive') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('defuntarchive_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

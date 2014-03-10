@@ -1,0 +1,30 @@
+ville:
+    pattern:  /
+    defaults: { _controller: "CimetiereBundle:Ville:index" }
+
+ville_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CimetiereBundle:Ville:show" }
+
+ville_new:
+    pattern:  /new
+    defaults: { _controller: "CimetiereBundle:Ville:new" }
+
+ville_create:
+    pattern:  /create
+    defaults: { _controller: "CimetiereBundle:Ville:create" }
+    requirements: { _method: post }
+
+ville_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CimetiereBundle:Ville:edit" }
+
+ville_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CimetiereBundle:Ville:update" }
+    requirements: { _method: post|put }
+
+ville_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CimetiereBundle:Ville:delete" }
+    requirements: { _method: post|delete }

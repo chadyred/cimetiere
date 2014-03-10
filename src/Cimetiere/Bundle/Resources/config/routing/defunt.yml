@@ -1,0 +1,30 @@
+defunt:
+    pattern:  /
+    defaults: { _controller: "CimetiereBundle:Defunt:index" }
+
+defunt_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CimetiereBundle:Defunt:show" }
+
+defunt_new:
+    pattern:  /new
+    defaults: { _controller: "CimetiereBundle:Defunt:new" }
+
+defunt_create:
+    pattern:  /create
+    defaults: { _controller: "CimetiereBundle:Defunt:create" }
+    requirements: { _method: post }
+
+defunt_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CimetiereBundle:Defunt:edit" }
+
+defunt_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CimetiereBundle:Defunt:update" }
+    requirements: { _method: post|put }
+
+defunt_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CimetiereBundle:Defunt:delete" }
+    requirements: { _method: post|delete }

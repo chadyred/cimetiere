@@ -1,0 +1,128 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+            <div class="row">
+                <div class="col-sm-4"><h1 >Concession</h1></div>
+                <div class="col-sm-4">
+                    <p><a href="{{ path('concession') }}">
+                            <button class="btn btn-success">Retour à la liste</button>
+                        </a></p>
+                </div>
+            </div>         
+            <table class="table table-striped table-hover">
+                <tbody>
+
+                    <tr>
+                        <th>Code de gestion de concession</th>
+                        <td>{{ entity.codeGestionConcession }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nature</th>
+                        <td>{{ entity.nature }}</td>
+                    </tr>
+                    <tr>
+                        <th>Type de concession</th>
+                        <td>{{ entity.typeConcession }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre de places</th>
+                        <td>{{ entity.nbPlaces }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date d'échéance</th>
+                        <td>{{ entity.dateEcheance|date('d-m-Y H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de dernière acquisition</th>
+                        <td>{{ entity.dateDerniereAcquisition|date('d-m-Y H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Durée</th>
+                        <td>{{ entity.duree }}</td>
+                    </tr>
+                    <tr>
+                        <th>Numero de titre de concession</th>
+                        <td>{{ entity.numeroTitreConcession }}</td>
+                    </tr>
+                    <tr>
+                        <th>Commentaires</th>
+                        <td>{{ entity.commentaire }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prix</th>
+                        <td>{{ entity.prix|number_format(2, ',', ',') }}€</td>
+                    </tr>
+                    <tr>
+                        <th>Hauteur</th>
+                        <td>{{ entity.hauteur }}</td>
+                    </tr>
+                    <tr>
+                        <th>Largeur</th>
+                        <td>{{ entity.largeur }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cimetière lié</th>
+                        <td>{{ entity.cimetiere }}</td>
+                    </tr>
+                    <tr>
+                        <th>Concessionnaire(s) lié(s)</th>
+                        <td>
+                            <ul class="resizable">
+{% for concessionaire in entity.concessionaires %}
+                                    <li> {{concessionaire}}</li>
+{% endfor %}  
+                                    </ul>                   
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Défunt(s) lié(s)</th>
+                                <td>
+                                    <ul class="resizable">
+{% for defunt in entity.defunts %}
+                                            <li> {{defunt}}</li>
+{% endfor %}  
+                                            </ul>                   
+                                        </td>
+                                    </tr>     
+                                </tbody>
+                            </table>
+                            <div class="col-sm-4 col-md-4  col-lg-4">
+                                <a href="{{ path('concession', { 'id': entity.id }) }}"><button class="btn btn-success btn-large">Retour à la liste</button></a>
+                            </div>
+                            <div class="col-sm-4 col-md-4  col-lg-4">
+                                <a href="{{ path('concession_edit', { 'id': entity.id }) }}"><button class="btn btn-warning btn-large">Éditer</button></a>
+                            </div>
+                            <div class="col-sm-4 col-md-4  col-lg-4">
+{{ form(delete_form) }}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function() {
+                            $(".resizable")
+                                    .wrap('<ul/>')
+                                    .css({'overflow': 'hidden'})
+                                    .parent()
+                                    .css({'display': 'inline-block',
+                                'overflow': 'hidden',
+                                'height': function() {
+                                    return $('.resizable', this).height();
+                                },
+                                'width': function() {
+                                    return $('.resizable', this).width();
+                                },
+                                'paddingBottom': '12px',
+                                'paddingRight': '12px'
+
+                            }).resizable()
+                                    .find('.resizable')
+                                    .css({overflow: 'auto',
+                                width: '100%',
+                                height: '100%'});
+                        });
+                        </script>
+{% endblock %}

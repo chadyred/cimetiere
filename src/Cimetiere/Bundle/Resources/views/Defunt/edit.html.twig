@@ -1,0 +1,149 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12  col-lg-10 col-lg-offset-1">
+            <h1>Modifier un défunt</h1>
+{{ form_start(edit_form, {'attr': {'class': 'form-horizontal'} }) }}
+{{ form_errors(edit_form) }}
+<div class="form-group">
+{{ form_label(edit_form.numeroOrdre, "Titre : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.numeroOrdre) }}
+{{ form_widget(edit_form.numeroOrdre, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.nomPrenom, "Nom et prénom : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.nomPrenom) }}
+{{ form_widget(edit_form.nomPrenom, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.nomJF, "Nom de jeune fille : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.nomJF) }}
+{{ form_widget(edit_form.nomJF, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.dateNaissance, "Code postal : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.dateNaissance) }}
+{{ form_widget(edit_form.dateNaissance) }}
+</div>  
+</div>
+            <div class="form-group">
+{{ form_label(edit_form.lieuNaissance, "Lieu de naissance : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.lieuNaissance) }}
+{{ form_widget(edit_form.lieuNaissance, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.dateDeces, "Date de décès : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.dateDeces) }}
+{{ form_widget(edit_form.dateDeces) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.lieuDeces, "Lieu de décès : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.lieuDeces) }}
+{{ form_widget(edit_form.lieuDeces, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.dateHinumation, "Date d'hinumation : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.dateHinumation) }}
+{{ form_widget(edit_form.dateHinumation) }}
+</div>  
+</div>
+<div class="form-group">
+{{ form_label(edit_form.dateExumation, "Date d'exumation : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.dateExumation) }}
+{{ form_widget(edit_form.dateExumation) }}
+</div>  
+</div>  
+<div class="form-group">
+{{ form_label(edit_form.dateReduction, "Date de réduction : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.dateReduction) }}
+{{ form_widget(edit_form.dateReduction) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.enveloppeFuneraire, "Enveloppe funéraire : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.enveloppeFuneraire) }}
+{{ form_widget(edit_form.enveloppeFuneraire, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.entrepriseFuneraire, "Entreprise funéraire : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.entrepriseFuneraire) }}
+{{ form_widget(edit_form.entrepriseFuneraire, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+<div class="form-group">
+{{ form_label(edit_form.marbrier, "Marbrier : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.marbrier) }}
+{{ form_widget(edit_form.marbrier, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>     
+<div class="form-group">
+{{ form_label(edit_form.oppositionCremation, "Opposition  de crémation : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.oppositionCremation) }}
+{{ form_widget(edit_form.oppositionCremation, {'attr': {'class': 'form-control'} }) }}
+</div>
+</div>
+<div class="form-group">
+{{ form_label(edit_form.commentaire, "Commentaire(s) : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.commentaire) }}
+{{ form_widget(edit_form.commentaire, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>
+<div class="form-group">
+{{ form_label(edit_form.codeGestionConcession, "Code de gestion de concession : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.codeGestionConcession) }}
+{{ form_widget(edit_form.codeGestionConcession, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>              
+<div class="form-group">
+{{ form_label(edit_form.concession, "Concession : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+{{ form_errors(edit_form.concession) }}
+{{ form_widget(edit_form.concession, {'attr': {'class': 'form-control'} }) }}
+</div>  
+</div>              
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-4">
+{{ form_end(edit_form , {'attr': {'class': 'btn btn-default'} }) }}
+</div> 
+  </div>
+  <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-4">
+        {{ form(delete_form , {'attr': {'class': 'form-horizontal'} }) }}
+    </div>
+  </div>
+                    <ul class="record_actions">
+                        <li>
+                            <a href="{{ path('defunt') }}">
+                                <button class="btn btn-success">Retour à la liste</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+{% endblock %}

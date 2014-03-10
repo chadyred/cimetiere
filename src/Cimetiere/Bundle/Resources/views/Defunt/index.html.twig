@@ -1,0 +1,56 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+            <h1>Liste des défunts</h1>
+            <table class="table table-striped table-hover text-center">
+                <thead>
+                    <tr>
+                        <th>Nom et prénom</th>
+                        <th>Numéro d'ordre</th>
+                        <th>Date de décès</th>
+                        <th>Commentaire(s)</th>
+                        <th>Concession</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('defunt_show', { 'id': entity.id }) }}">{{ entity.nomPrenom }}</a></td>
+                            <td>{{ entity.numeroOrdre }}</td>
+                            <td>{% if entity.dateDeces %}{{ entity.dateDeces|date('d-m-Y H:i:s') }}{% endif %}</td>
+                            <td>{{ entity.commentaire }}</td>
+                            <td>{% if entity.concession.id != 0 %}{{ entity.concession.codeGestionConcession }}{% endif %}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('defunt_show', { 'id': entity.id }) }}"><button class="btn btn-info btn-sm">Visualiser</button></a>
+                                    </li>
+                                    <br/>
+                                    <li>
+                                        <a href="{{ path('defunt_edit', { 'id': entity.id }) }}"><button class="btn btn-warning btn-sm">Éditer</button></a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation pagination">
+{{ knp_pagination_render(entities,null, {}, {'alignment': 'center'}) }}
+                    </div>
+
+                    <ul>
+                        <li>
+                            <a href="{{ path('defunt_new') }}">
+                                <button class="btn btn-success">Ajouter un défunt</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

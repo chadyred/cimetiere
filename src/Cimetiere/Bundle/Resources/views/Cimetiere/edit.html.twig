@@ -1,0 +1,63 @@
+{% extends 'CimetiereBundle::layout.html.twig' %}
+
+{% block contenu -%}
+<div class="container-fluid page-container">
+    <div class="row">
+        <div class="content-tab col-sm-12 col-md-12  col-lg-10 col-lg-offset-1">
+            <h1>Cimetiere Edition</h1>
+
+            {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'} }) }}
+    {{ form_errors(edit_form) }}
+
+            <div class="form-group">
+        {{ form_label(edit_form.codeCimetiere, "Code du cimetière : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+        {{ form_errors(edit_form.codeCimetiere) }}
+        {{ form_widget(edit_form.codeCimetiere, {'attr': {'class': 'form-control'} }) }}
+                </div>
+                </div>
+                <div class="form-group">
+        {{ form_label(edit_form.nomCimetiere, "Nom du cimetière : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+        {{ form_errors(edit_form.nomCimetiere) }}
+        {{ form_widget(edit_form.nomCimetiere, {'attr': {'class': 'form-control'} }) }}
+                    </div>
+                            </div>
+
+    <div class="form-group">
+        {{ form_label(edit_form.url, "Url de l'image : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+<div class="col-sm-4">
+        {{ form_errors(edit_form.url) }}
+        {{ form_widget(edit_form.url, {'attr': {'class': 'form-control'} }) }}
+                    </div>
+                            </div>
+            <div class="form-group">
+        {{ form_label(edit_form.ville, "Nom de la ville : ", {'label_attr': {'class': 'col-sm-2 control-label'} }) }}
+        <div class="col-sm-4">
+        {{ form_errors(edit_form.ville) }}
+        {{ form_widget(edit_form.ville, {'attr': {'class': 'form-control'} }) }}
+                    </div>                </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+        {{ form_end(edit_form , {'attr': {'class': 'btn btn-default'} }) }}
+    </div>
+          
+        
+  </div>
+  <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-4">
+        {{ form(delete_form , {'attr': {'class': 'form-horizontal'} }) }}
+    </div>
+  </div>
+                    <ul class="record_actions">
+                        <li>
+                            <a href="{{ path('cimetiere') }}">
+                                <button class="btn btn-success">Retour à la liste</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+{% endblock %}

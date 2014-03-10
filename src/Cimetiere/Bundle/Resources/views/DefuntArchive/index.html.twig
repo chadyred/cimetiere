@@ -1,0 +1,71 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>DefuntArchive list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codegestionconcession</th>
+                <th>Numeroordre</th>
+                <th>Nomprenom</th>
+                <th>Nomjf</th>
+                <th>Datenaissance</th>
+                <th>Lieunaissance</th>
+                <th>Datedeces</th>
+                <th>Lieudeces</th>
+                <th>Datehinumation</th>
+                <th>Dateexumation</th>
+                <th>Datereduction</th>
+                <th>Enveloppefuneraire</th>
+                <th>Entreprisefuneraire</th>
+                <th>Marbrier</th>
+                <th>Oppositioncremation</th>
+                <th>Commentaire</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('defuntarchive_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.codeGestionConcession }}</td>
+                <td>{{ entity.numeroOrdre }}</td>
+                <td>{{ entity.nomPrenom }}</td>
+                <td>{{ entity.nomJF }}</td>
+                <td>{% if entity.dateNaissance %}{{ entity.dateNaissance|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.lieuNaissance }}</td>
+                <td>{% if entity.dateDeces %}{{ entity.dateDeces|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.lieuDeces }}</td>
+                <td>{% if entity.dateHinumation %}{{ entity.dateHinumation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.dateExumation %}{{ entity.dateExumation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.dateReduction %}{{ entity.dateReduction|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.enveloppeFuneraire }}</td>
+                <td>{{ entity.entrepriseFuneraire }}</td>
+                <td>{{ entity.marbrier }}</td>
+                <td>{{ entity.oppositionCremation }}</td>
+                <td>{{ entity.commentaire }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('defuntarchive_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('defuntarchive_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('defuntarchive_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
